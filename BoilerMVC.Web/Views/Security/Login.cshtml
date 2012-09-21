@@ -1,0 +1,25 @@
+﻿@model LoginViewModel
+
+
+@using (Html.BeginForm())
+{
+    <dl>
+        <dt>@Html.LabelFor(m => m.Email)</dt>
+        <dd>
+            @Html.EditorFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </dd>
+
+        <dt>@Html.LabelFor(m => m.Password)</dt>
+        <dd>
+            @Html.EditorFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </dd>
+
+        <dt>@Html.EditorFor(m => m.RememberMe) @Html.LabelFor(m => m.RememberMe)</dt>
+
+        <dd>
+            <button type="submit">Login</button>
+        </dd>
+    </dl>    
+}

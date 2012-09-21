@@ -1,0 +1,19 @@
+﻿@model BaseEmail
+@{
+    Layout = null;
+}
+From: @Model.From
+To: @Model.To
+Subject: @Model.Subject
+
+<!DOCTYPE html>
+
+<html>
+    <body>
+        @RenderBody()
+
+        <p>
+            - Website Team
+        </p>
+    </body>
+</html>

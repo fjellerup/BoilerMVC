@@ -1,0 +1,17 @@
+﻿@model WelcomeEmail
+           
+<p>
+    Thank you for signing up for <strong>@Model.WebsiteName</strong>.
+</p>
+
+<p>
+    Visit <a href="@Model.LoginUrl">@Model.LoginUrl</a> and login using the following:
+</p>
+
+<dl>
+    <dt>Email</dt>
+    <dd>@Model.From</dd>
+
+    <dt>Password</dt>
+    <dd>@Model.Password</dd>
+</dl>

@@ -1,0 +1,35 @@
+﻿@model RegisterViewModel
+    
+@using (Html.BeginForm()) 
+{
+    @Html.ValidationSummary(true)
+    <dl>
+        <dt>
+            @Html.LabelFor(m => m.Email)
+        </dt>
+        <dd>
+            @Html.EditorFor(m => m.Email)
+            @Html.ValidationMessageFor(m => m.Email)
+        </dd>
+    
+        <dt>
+            @Html.LabelFor(m => m.Password)
+        </dt>
+        <dd>
+            @Html.EditorFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </dd>
+    
+        <dt>
+            @Html.LabelFor(m => m.ConfirmPassword)
+        </dt>
+        <dd>
+            @Html.EditorFor(m => m.ConfirmPassword)
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </dd>
+    
+        <dd>
+            <button type="submit">Create</button>
+        </dd>
+    </dl>
+}

@@ -1,0 +1,20 @@
+﻿@{
+    Layout = null;
+}
+<div class="btn-group pull-right">
+    @if (Request.IsAuthenticated)
+    {
+        <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#">
+            @User.Identity.Name
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("Logout", "Logout", "Security")</li>
+        </ul>
+    }
+    else
+    {
+        @Html.RouteLink("Login", new { action = "Login", controller = "Security" }, new { @class = "btn btn-small" })
+        @Html.RouteLink("Register", new { action = "Register", controller = "Security" }, new { @class = "btn btn-small btn-primary" })
+    }
+</div>

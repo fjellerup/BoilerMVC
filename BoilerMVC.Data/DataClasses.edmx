@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BoilerMVC.Data.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BoilerMVCDataStoreContainer">
+          <EntitySet Name="InRoles" EntityType="BoilerMVC.Data.Store.InRoles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PasswordResetRequests" EntityType="BoilerMVC.Data.Store.PasswordResetRequests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="BoilerMVC.Data.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="BoilerMVC.Data.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_InRoles_Roles" Association="BoilerMVC.Data.Store.FK_InRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="InRoles" EntitySet="InRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InRoles_Users" Association="BoilerMVC.Data.Store.FK_InRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="InRoles" EntitySet="InRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PasswordResetRequests_Users" Association="BoilerMVC.Data.Store.FK_PasswordResetRequests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PasswordResetRequests" EntitySet="PasswordResetRequests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="InRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PasswordResetRequests">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="Code" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HashedPassword" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="LastLoginIP" Type="nchar" MaxLength="50" />
+          <Property Name="LastLogout" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_InRoles_Roles">
+          <End Role="Roles" Type="BoilerMVC.Data.Store.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InRoles" Type="BoilerMVC.Data.Store.InRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InRoles_Users">
+          <End Role="Users" Type="BoilerMVC.Data.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="InRoles" Type="BoilerMVC.Data.Store.InRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PasswordResetRequests_Users">
+          <End Role="Users" Type="BoilerMVC.Data.Store.Users" Multiplicity="1" />
+          <End Role="PasswordResetRequests" Type="BoilerMVC.Data.Store.PasswordResetRequests" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PasswordResetRequests">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BoilerMVC.Data" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BoilerMVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="InRoles" EntityType="BoilerMVC.Data.InRole" />
+          <EntitySet Name="PasswordResetRequests" EntityType="BoilerMVC.Data.PasswordResetRequest" />
+          <EntitySet Name="Roles" EntityType="BoilerMVC.Data.Role" />
+          <EntitySet Name="Users" EntityType="BoilerMVC.Data.User" />
+          <AssociationSet Name="FK_InRoles_Roles" Association="BoilerMVC.Data.FK_InRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="InRole" EntitySet="InRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InRoles_Users" Association="BoilerMVC.Data.FK_InRoles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="InRole" EntitySet="InRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PasswordResetRequests_Users" Association="BoilerMVC.Data.FK_PasswordResetRequests_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="PasswordResetRequest" EntitySet="PasswordResetRequests" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="InRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="RoleId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="BoilerMVC.Data.FK_InRoles_Roles" FromRole="InRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="BoilerMVC.Data.FK_InRoles_Users" FromRole="InRole" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PasswordResetRequest">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="Guid" Name="Code" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="BoilerMVC.Data.FK_PasswordResetRequests_Users" FromRole="PasswordResetRequest" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="InRoles" Relationship="BoilerMVC.Data.FK_InRoles_Roles" FromRole="Role" ToRole="InRole" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HashedPassword" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Salt" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" />
+          <Property Type="DateTime" Name="LastLogin" />
+          <Property Type="String" Name="LastLoginIP" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="LastLogout" />
+          <NavigationProperty Name="InRoles" Relationship="BoilerMVC.Data.FK_InRoles_Users" FromRole="User" ToRole="InRole" />
+          <NavigationProperty Name="PasswordResetRequest" Relationship="BoilerMVC.Data.FK_PasswordResetRequests_Users" FromRole="User" ToRole="PasswordResetRequest" />
+        </EntityType>
+        <Association Name="FK_InRoles_Roles">
+          <End Type="BoilerMVC.Data.Role" Role="Role" Multiplicity="1" />
+          <End Type="BoilerMVC.Data.InRole" Role="InRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InRoles_Users">
+          <End Type="BoilerMVC.Data.User" Role="User" Multiplicity="1" />
+          <End Type="BoilerMVC.Data.InRole" Role="InRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="InRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PasswordResetRequests_Users">
+          <End Type="BoilerMVC.Data.User" Role="User" Multiplicity="1" />
+          <End Type="BoilerMVC.Data.PasswordResetRequest" Role="PasswordResetRequest" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PasswordResetRequest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BoilerMVCDataStoreContainer" CdmEntityContainer="BoilerMVCEntities">
+          <EntitySetMapping Name="InRoles">
+            <EntityTypeMapping TypeName="BoilerMVC.Data.InRole">
+              <MappingFragment StoreEntitySet="InRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PasswordResetRequests">
+            <EntityTypeMapping TypeName="BoilerMVC.Data.PasswordResetRequest">
+              <MappingFragment StoreEntitySet="PasswordResetRequests">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BoilerMVC.Data.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BoilerMVC.Data.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="LastLogout" ColumnName="LastLogout" />
+                <ScalarProperty Name="LastLoginIP" ColumnName="LastLoginIP" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="HashedPassword" ColumnName="HashedPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DataClasses">
+        <EntityTypeShape EntityType="BoilerMVC.Data.InRole" Width="1.5" PointX="5" PointY="0.5" Height="1.9802864583333322" />
+        <EntityTypeShape EntityType="BoilerMVC.Data.PasswordResetRequest" Width="1.5" PointX="0.5" PointY="0.5" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BoilerMVC.Data.Role" Width="1.5" PointX="7.625" PointY="0.625" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BoilerMVC.Data.User" Width="1.5" PointX="2.875" PointY="0.5" Height="2.941793619791667" />
+        <AssociationConnector Association="BoilerMVC.Data.FK_InRoles_Roles" >
+          <ConnectorPoint PointX="7.625" PointY="1.4228417968749998" />
+          <ConnectorPoint PointX="6.5" PointY="1.4228417968749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="BoilerMVC.Data.FK_InRoles_Users" >
+          <ConnectorPoint PointX="4.375" PointY="1.4901432291666659" />
+          <ConnectorPoint PointX="5" PointY="1.4901432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="BoilerMVC.Data.FK_PasswordResetRequests_Users" >
+          <ConnectorPoint PointX="2.875" PointY="1.3939925130208337" />
+          <ConnectorPoint PointX="2" PointY="1.3939925130208337" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
