@@ -1,1 +1,1 @@
-[http://omar.io/boilermvc](http://omar.io/boilermvc)
+See docs at [http://omar.io/boilermvc](http://omar.io/boilermvc)
