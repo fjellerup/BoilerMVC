@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en"><script src="http://1.2.3.4/bmi-int-js/bmi.js?version=1332944399" language="javascript"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>BoilerMVC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+	  #home {
+		color: #fff;
+	  }
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#" id="home">BoilerMVC</a>
+          <div class="nav-collapse collapse">
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+		<h1>BoilerMVC</h1>
+		<p>
+			... is an ASP.NET MVC 3 boilerplate web application template aimed at newbies and advanced users. 
+			The template implements a variety of patterns and practices, and utilizes a handful of NuGet packages.
+		</p>
+      </div>
+		<hr />
+		<div class="row">
+			<div class="span6">
+				<p>
+					BoilerMVC is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a> 
+					allowing it's usage in any scenario (personal, commercial, non-profit etc.).
+				</p>
+			</div>
+			<div class="span3 offset1">
+				<!--<p>version <span class="label label-success">1</span> on <span class="label label-warning">11/2012</span></p>-->
+			</div>
+			<!--<div class="span2">
+				<p><a href="#download" class="btn primary">Download (zip, 1.3 mb)</a></p>
+			</div>-->
+			<div class="span2">
+				<p><a href="http://github.com/omark/BoilerMVC" class="btn btn-primary">GitHub</a></p>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="span3">
+				<h3>Technologies</h3>
+				<ul>
+					<li>.NET 4</li>
+					<li>C#</li>
+					<li>ASP.NET MVC 3</li>
+					<li>Razor Templates (.cshtml)</li>
+					<li>
+						Layout Options
+						<ul>
+							<li>Standard ASP.NET MVC 3</li>
+							<li>HTML5 Boilerplate</li>
+							<li>Twitter Bootstrap</li>
+						</ul>
+					</li>
+					<li>Visual Studio 2010</li>
+				</ul>
+			</div>
+			<div class="span3">
+				<h3>Patterns/Practices</h3>
+				<ul>
+					<li>Dependency Injection</li>
+					<li>N-tier Architecture</li>
+					<li>Repository Pattern</li>
+					<li>Seperation of Concerns</li>
+					<li>Unit of Work</li>
+					<li>Unit Testing and Mocking</li>
+				</ul>
+			</div>
+			<div class="span3">
+				<h3>Packages</h3>
+				<ul>
+					<li>Entity Framework</li>
+					<li>Moq</li>
+					<li>Ninject.MVC3</li>
+					<li>NUnit</li>
+					<li>Postal</li>
+				</ul>
+			</div>
+			<div class="span3">
+				<h3>Features</h3>
+				<ul>
+					<li>
+						Authentication System
+						<ul>
+							<li>User Login/Registration</li>
+							<li>Roles</li>
+							<li>Permissions</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="page-header">
+			<h1>Architecture</h1>
+		</div>
+		
+		<div class="row">
+			<div class="span4">
+				<h2>N-tier</h2>
+			</div>
+			<div class="span8">
+				<p>BoilerMVC is separated into 6 different projects:<p>
+				<dl>
+					<dt>BoilerMVC.Common</dt>
+					<dd>Contains functionality used accross all layers: extension methods, interfaces etc.</dd>
+					
+					<dt>BoilerMVC.Data</dt>
+					<dd>Functions as the data access layer housing Entity Framework classes and repositories.</dd>
+					
+					<dt>BoilerMVC.Framework</dt>
+					<dd>Contains components and classes used by ASP.NET MVC: view models, HTML helpers, base controller classe.</dd>
+					
+					<dt>BoilerMVC.Services</dt>
+					<dd>Contains business logic classes. Acts as intermediate between the database and the web layers.</dd>
+					
+					<dt>BoilerMVC.Tests</dt>
+					<dd>Contains unit tests.</dd>
+					
+					<dt>BoilerMVC.Web</dt>
+					<dd>ASP.NET MVC application project. Contains views, controllers and all website related content.</dd>
+				</dl>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="span12">
+				<h3>Contact</h3>
+				<p>Send comments and suggestions to Omar Khudeira at
+				<span class="email">
+					okhud<span class="email-hide">someemail@somedomain.com</span>eira<span class="email-hide">someemail@somedomain.com</span>@<span class="email-hide">someemail@somedomain.com</span>gma<span class="email-hide">someemail@somedomain.com</span>il.com
+				</span>
+				<p>
+			</div>
+		</div>
+		
+      <hr>
+
+      <footer>
+        <p>&copy; Omar Khudeira 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.email span.email-hide').hide();
+		});
+	</script>
+  </body>
+</html>
+<script language="javascript"><!--
+bmi_SafeAddOnload(bmi_load,"bmi_orig_img",0);//-->
+</script>
