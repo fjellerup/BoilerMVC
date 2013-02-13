@@ -14,10 +14,9 @@ namespace BoilerMVC.Framework
     {
         public override void Load()
         {
-            Bind<BoilerMVCEntities>().ToSelf();
-            Bind<IUnitOfWork>().ToMethod(item => item.Kernel.Get<BoilerMVCEntities>());
-            Bind<DbContext>().ToMethod(item => item.Kernel.Get<BoilerMVCEntities>());
-            Bind(typeof(IRepository<>)).To(typeof(EntityRepository<>));
+            IUnitOfWork shopContext = new BoilerMVCEntities();
+            Kernel.Bind(typeof(IUnitOfWork)).ToConstant(shopContext);
+            Kernel.Bind(typeof(IRepository<>)).To(typeof(EntityRepository<>));
         }
     }
 }

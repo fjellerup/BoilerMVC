@@ -13,9 +13,15 @@ namespace BoilerMVC.Data
         private DbContext _context;
         private DbSet<T> _table;
 
-        public EntityRepository(DbContext context)
+        public EntityRepository(IUnitOfWork context)
         {
-            _context = context;
+            _context = context as DbContext;
+
+            if (_context == null)
+            {
+                throw new Exception("Supplied IUnitOfWork is not a type of DbContext");
+            }
+
             _table = _context.Set<T>();
         }
 
