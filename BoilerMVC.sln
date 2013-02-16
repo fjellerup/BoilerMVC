@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerMVC.Web", "BoilerMVC.Web\BoilerMVC.Web.csproj", "{1807C7E7-2A54-492D-969C-447AEDFF19D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoilerMVC.Data", "BoilerMVC.Data\BoilerMVC.Data.csproj", "{B4055850-618F-4695-9A65-EC5EB53EC0C1}"
