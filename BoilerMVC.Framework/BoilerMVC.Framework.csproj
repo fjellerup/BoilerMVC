@@ -74,7 +74,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Attributes\Validation\EmailValidationAttribute.cs" />
     <Compile Include="Helpers\Html\Messages.cs" />
     <Compile Include="Utilities\Emailer.cs" />
